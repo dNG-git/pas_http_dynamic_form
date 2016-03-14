@@ -1,0 +1,1 @@
+-e git+http://git.direct-netware.de/pas/http/dom_editor/#egg=pas_http_dom_editor

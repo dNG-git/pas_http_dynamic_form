@@ -1,0 +1,13 @@
+<div class="pageform_element">
+	<div class="pageform_label"><strong>[rewrite:content]title[/rewrite][if:content:required == 1] <em>*</em>[/if]</strong>:</div>
+	<div class="pageform_field pageform_dynamic_form_field_area[if:content:css_class != ] [rewrite:content]css_class[/rewrite][/if]">
+		<div id="[rewrite:content]id[/rewrite]">[rewrite:l10n]pas_http_core_loading_additional_data[/rewrite]</div>
+[if:content:error_message != ]
+		<p class="pageform_error">[rewrite:content]error_message[/rewrite]</p>
+[/if]
+	</div><script type="text/javascript"><![CDATA[
+	require([ "pas/DynamicFormElement.min" ], function(DynamicFormElement) {
+		new DynamicFormElement({ id: "[rewrite:content]id[/rewrite]", service_api_query: "[rewrite:content]service_api_query[/rewrite]", type: "dynamic" });
+	});
+	]]></script>
+</div>

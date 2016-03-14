@@ -1,0 +1,5 @@
+<div class="pagecontent_box pagecontent_overlay_box pagecontent_modal_overlay_box pageform_overlay_box"[if:content:on_closed_query != ] data-pas-dom-editor-overlay-on-closed-query="[rewrite:safe_content]on_closed_query[/rewrite]"[/if]>
+	<h1>[rewrite:content]title[/rewrite]</h1>
+[block:content:form]output.OverlayForm.render[/block]
+	<p style="text-align: center"><a href="" data-pas-dom-editor-overlay-action="destroy">[rewrite:l10n]core_close[/rewrite]</a></p>
+</div>
