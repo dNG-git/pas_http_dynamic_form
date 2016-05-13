@@ -54,10 +54,12 @@ with TemporaryDirectory(dir = ".") as build_directory:
 #
 	js_copyright = "pas.http.dynamic_form #echo(pasHttpDynamicFormVersion)# - (C) direct Netware Group - All rights reserved"
 
-	parameters = { "pasHttpDynamicFormVersion": get_version(),
+	parameters = { "install_data_plain_copy_extensions": "tsc",
+	               "pasHttpDynamicFormVersion": get_version(),
 	               "js_header": js_copyright, "js_min_filenames": True
 	             }
 
+	InstallData.add_install_data_callback(InstallData.plain_copy, [ "data" ])
 	InstallData.add_install_data_callback(InstallJsData.callback, [ "data" ])
 	InstallData.set_build_target_path(build_directory)
 	InstallData.set_build_target_parameters(parameters)
@@ -68,10 +70,12 @@ with TemporaryDirectory(dir = ".") as build_directory:
 	      version = get_version(),
 	      description = "Python Application Services",
 	      long_description = """"pas_http_dynamic_form" extends form elements with dynamic interaction capabilities.""",
-	      author = "direct Netware Group",
+	      author = "direct Netware Group et al.",
 	      author_email = "web@direct-netware.de",
 	      license = "GPLv2+",
 	      url = "https://www.direct-netware.de/redirect?pas;http;dynamic_form",
+
+	      platforms = [ "any" ],
 
 	      package_dir = { "": _build_path },
 	      packages = [ "dNG" ],
