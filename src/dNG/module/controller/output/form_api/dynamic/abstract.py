@@ -34,24 +34,24 @@ https://www.direct-netware.de/redirect?licenses;gpl
 from binascii import hexlify
 from os import urandom
 
+from dNG.controller.predefined_http_request import PredefinedHttpRequest
+from dNG.data.binary import Binary
+from dNG.data.text.input_filter import InputFilter
+from dNG.data.text.l10n import L10n
+from dNG.data.xhtml.form.processor import Processor as FormProcessor
+from dNG.data.xhtml.link import Link
+from dNG.data.xhtml.oset.file_parser import FileParser
 from dNG.data.xml_parser import XmlParser
-from dNG.pas.controller.predefined_http_request import PredefinedHttpRequest
-from dNG.pas.data.text.input_filter import InputFilter
-from dNG.pas.data.text.l10n import L10n
-from dNG.pas.data.xhtml.link import Link
-from dNG.pas.data.xhtml.form.processor import Processor as FormProcessor
-from dNG.pas.database.connection import Connection
-from dNG.pas.module.controller.services.abstract_dom_editor import AbstractDomEditor
-from dNG.pas.runtime.not_implemented_exception import NotImplementedException
-from dNG.pas.data.binary import Binary
-from dNG.pas.data.xhtml.oset.file_parser import FileParser
+from dNG.database.connection import Connection
+from dNG.module.controller.services.abstract_dom_editor import AbstractDomEditor
+from dNG.runtime.not_implemented_exception import NotImplementedException
 
 class Abstract(AbstractDomEditor):
 #
 	"""
 "Abstract" is used to handle dynamic form input fields.
 
-:author:     direct Netware Group
+:author:     direct Netware Group et al.
 :copyright:  (C) direct Netware Group - All rights reserved
 :package:    pas.http
 :subpackage: dynamic_form
@@ -226,10 +226,8 @@ Returns (X)HTML for the current content of an dynamic field.
 		"""
 Action for "get"
 
-:since: v1.0.00
+:since: v0.1.00
 		"""
-
-		form_field_id = InputFilter.filter_control_chars(self.request.get_dsd("oform_field_id", "")).strip()
 
 		L10n.init("pas_http_core_form")
 
@@ -299,7 +297,7 @@ Action for "edit"
 
 		if (is_save_mode and form.check()):
 		#
-			entry_data = self._save_edit_form(form, entry_data)
+			self._save_edit_form(form)
 			self._set_destroy_dom_result()
 		#
 		else:
@@ -405,7 +403,7 @@ Action for "new-save"
 		self.execute_new(self.request.get_type() == "POST")
 	#
 
-	def _save_edit_form(self, form, entry_data):
+	def _save_edit_form(self, form):
 	#
 		"""
 Handles and returns data to be saved for an edited dynamic form entry.

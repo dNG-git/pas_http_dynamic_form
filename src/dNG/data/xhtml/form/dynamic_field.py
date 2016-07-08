@@ -31,9 +31,10 @@ https://www.direct-netware.de/redirect?licenses;gpl
 #echo(__FILEPATH__)#
 """
 
-from dNG.pas.data.xhtml.formatting import Formatting
-from dNG.pas.data.xhtml.link import Link
-from dNG.pas.runtime.value_exception import ValueException
+from dNG.data.xhtml.formatting import Formatting
+from dNG.data.xhtml.link import Link
+from dNG.runtime.value_exception import ValueException
+
 from .abstract_field import AbstractField
 
 class DynamicField(AbstractField):
@@ -42,7 +43,7 @@ class DynamicField(AbstractField):
 "DynamicField" is used to provide more complex input use cases e.g. handling
 multiple rows.
 
-:author:     direct Netware Group
+:author:     direct Netware Group et al.
 :copyright:  direct Netware Group - All rights reserved
 :package:    pas.http
 :subpackage: dynamic_form
@@ -161,7 +162,7 @@ Returns the context used for rendering the given field.
 Returns the field type.
 
 :return: (str) Field type
-:since:  v0.1.01
+:since:  v0.1.00
 		"""
 
 		return "dynamic"

@@ -40,7 +40,7 @@ class DynamicSelectField(DynamicChoicesMixin, AbstractSelectField):
 "DynamicSelectField" provides a selectbox with choices being provided by
 an external API service.
 
-:author:     direct Netware Group
+:author:     direct Netware Group et al.
 :copyright:  direct Netware Group - All rights reserved
 :package:    pas.http
 :subpackage: dynamic_form
@@ -61,6 +61,21 @@ Constructor __init__(DynamicSelectField)
 
 		AbstractSelectField.__init__(self, name)
 		DynamicChoicesMixin.__init__(self)
+	#
+
+	def _check(self):
+	#
+		"""
+Executes checks if the field value is valid.
+
+:return: (bool) True if all checks are passed
+:since:  v0.1.00
+		"""
+
+		_return = AbstractSelectField._check(self)
+		if (_return): _return = self._check_values_selected_size(1)
+
+		return _return
 	#
 
 	def _get_render_context(self):
@@ -84,7 +99,7 @@ Returns the context used for rendering the given field.
 Renders the given field.
 
 :return: (str) Valid XHTML form field definition
-:since:  v0.1.03
+:since:  v0.1.00
 		"""
 
 		return self._render_oset_file("dynamic_form/select", self._get_render_context())

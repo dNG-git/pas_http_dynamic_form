@@ -31,8 +31,9 @@ https://www.direct-netware.de/redirect?licenses;gpl
 #echo(__FILEPATH__)#
 """
 
-from dNG.pas.data.xhtml.link import Link
-from dNG.pas.runtime.value_exception import ValueException
+from dNG.data.xhtml.link import Link
+from dNG.runtime.value_exception import ValueException
+
 from .choices_mixin import ChoicesMixin
 
 class DynamicChoicesMixin(ChoicesMixin):
@@ -40,7 +41,7 @@ class DynamicChoicesMixin(ChoicesMixin):
 	"""
 "ChoicesMixin" provides methods to handle selectable options.
 
-:author:     direct Netware Group
+:author:     direct Netware Group et al.
 :copyright:  direct Netware Group - All rights reserved
 :package:    pas.http
 :subpackage: dynamic_form
@@ -54,7 +55,7 @@ class DynamicChoicesMixin(ChoicesMixin):
 		"""
 Constructor __init__(ChoicesMixin)
 
-:since: v0.1.01
+:since: v0.1.00
 		"""
 
 		ChoicesMixin.__init__(self)

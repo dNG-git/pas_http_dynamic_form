@@ -31,22 +31,22 @@ https://www.direct-netware.de/redirect?licenses;gpl
 #echo(__FILEPATH__)#
 """
 
+from dNG.data.text.input_filter import InputFilter
+from dNG.data.http.translatable_exception import TranslatableException
+from dNG.data.xhtml.form.processor import Processor
 from dNG.data.xml_parser import XmlParser
-from dNG.pas.data.text.input_filter import InputFilter
-from dNG.pas.data.http.translatable_exception import TranslatableException
-from dNG.pas.data.xhtml.form.processor import Processor
-from dNG.pas.database.connection import Connection
-from dNG.pas.database.nothing_matched_exception import NothingMatchedException
-from dNG.pas.module.controller.services.abstract_dom_editor import AbstractDomEditor
-from dNG.pas.runtime.not_implemented_exception import NotImplementedException
-from dNG.pas.runtime.io_exception import IOException
+from dNG.database.connection import Connection
+from dNG.database.nothing_matched_exception import NothingMatchedException
+from dNG.module.controller.services.abstract_dom_editor import AbstractDomEditor
+from dNG.runtime.not_implemented_exception import NotImplementedException
+from dNG.runtime.io_exception import IOException
 
 class Abstract(AbstractDomEditor):
 #
 	"""
 "Abstract" is used to handle dynamic form choices.
 
-:author:     direct Netware Group
+:author:     direct Netware Group et al.
 :copyright:  (C) direct Netware Group - All rights reserved
 :package:    pas.http
 :subpackage: dynamic_form

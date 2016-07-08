@@ -31,11 +31,12 @@ https://www.direct-netware.de/redirect?licenses;gpl
 #echo(__FILEPATH__)#
 """
 
-from dNG.pas.data.http.translatable_error import TranslatableError
-from dNG.pas.data.xhtml.formatting import Formatting as XHtmlFormatting
-from dNG.pas.data.xhtml.link import Link
-from dNG.pas.module.controller.abstract_http import AbstractHttp as AbstractHttpController
-from dNG.pas.runtime.value_exception import ValueException
+from dNG.data.http.translatable_error import TranslatableError
+from dNG.data.xhtml.formatting import Formatting as XHtmlFormatting
+from dNG.data.xhtml.link import Link
+from dNG.module.controller.abstract_http import AbstractHttp as AbstractHttpController
+from dNG.runtime.value_exception import ValueException
+
 from .form_parse_mixin import FormParseMixin
 
 class OverlayForm(FormParseMixin, AbstractHttpController):
@@ -43,7 +44,7 @@ class OverlayForm(FormParseMixin, AbstractHttpController):
 	"""
 The "Form" class implements the form view.
 
-:author:     direct Netware Group
+:author:     direct Netware Group et al.
 :copyright:  (C) direct Netware Group - All rights reserved
 :package:    pas.http
 :subpackage: dynamic_form
