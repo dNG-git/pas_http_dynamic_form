@@ -124,7 +124,10 @@ Returns content for an empty dynamic field.
 	def _get_formatted_entry_content(self, entry_position, template_name, content):
 	#
 		"""
-@TODO
+Returns (X)HTML for the given form field entry of an dynamic field.
+
+:return: (str) Valid XHTML form field entry content for an dynamic field
+:since:  v0.1.00
 		"""
 
 		file_parser = FileParser()
@@ -145,17 +148,34 @@ Returns content for an empty dynamic field.
 		                                  )
 
 		content = { "content": entry_content,
+		            "edit_title": self._get_form_action_edit_title(),
 		            "edit_query_string": edit_query_string,
+		            "delete_title": self._get_form_action_delete_title(),
 		            "delete_query_string": delete_query_string
 		          }
 
 		return file_parser.render("dynamic_form.field_entry", content)
 	#
 
+	def _get_form_action_delete_title(self):
+	#
+		"""
+Returns the title used for the delete action of an form field entry.
+
+:return: (str) Title used for the delete action of an form field entry
+:since:  v0.1.00
+		"""
+
+		return L10n.get("pas_http_core_form_element_entry_delete")
+	#
+
 	def _get_form_action_edit_title(self):
 	#
 		"""
-@TODO
+Returns the title used for the edit action of an form field entry.
+
+:return: (str) Title used for the edit action of an form field entry
+:since:  v0.1.00
 		"""
 
 		return L10n.get("pas_http_core_form_element_entry_edit")
@@ -164,7 +184,10 @@ Returns content for an empty dynamic field.
 	def _get_form_action_new_title(self):
 	#
 		"""
-@TODO
+Returns the title used for the new action of an form field entry.
+
+:return: (str) Title used for the new action of an form field entry
+:since:  v0.1.00
 		"""
 
 		return L10n.get("pas_http_core_form_element_entry_new")
@@ -173,7 +196,10 @@ Returns content for an empty dynamic field.
 	def _get_form_field_list(self):
 	#
 		"""
-@TODO
+Returns the content of the form store for this dynamic field.
+
+:return: (dict) Content of the form store for this dynamic field
+:since:  v0.1.00
 		"""
 
 		form_field_id = InputFilter.filter_control_chars(self.request.get_dsd("oform_field_id"))
@@ -185,7 +211,10 @@ Returns content for an empty dynamic field.
 	def _get_form_store(self):
 	#
 		"""
-@TODO
+Returns the form store in use for this dynamic field.
+
+:return: (object) The form store in use for this dynamic field
+:since:  v0.1.00
 		"""
 
 		form_id = InputFilter.filter_control_chars(self.request.get_dsd("oform_id"))
@@ -195,14 +224,18 @@ Returns content for an empty dynamic field.
 	def _get_new_entry_link_content(self):
 	#
 		"""
-@TODO
+Returns (X)HTML to add a new entry to the current content of an dynamic
+field.
+
+:return: (str) Valid XHTML link to add a new entry
+:since:  v0.1.00
 		"""
 
 		query_string = Link().build_url(Link.TYPE_QUERY_STRING, { "__request__": True, "a": "new" })
 
 		link_attributes = { "tag": "a",
 		                    "attributes": { "data-pas-dom-editor-query": query_string, "href": "" },
-		                    "value": L10n.get("pas_http_core_form_element_entry_new")
+		                    "value": self._get_form_action_new_title()
 		                  }
 
 		return "<p>{0}</p>".format(XmlParser().dict_to_xml_item_encoder(link_attributes))
