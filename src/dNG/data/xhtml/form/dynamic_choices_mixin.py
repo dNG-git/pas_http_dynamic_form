@@ -69,7 +69,10 @@ Additional parameters transmitted to receive choices by the API service.
 	def _get_choices_service_api_query(self):
 	#
 		"""
-@TODO
+Returns the link to the dynamic form choices API endpoint.
+
+:return: (str) Link to the dynamic form choices API endpoint
+:since:  v0.1.00
 		"""
 
 		query_string_parameters = self.choices_api_service_parameters
